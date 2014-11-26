@@ -1,0 +1,1526 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY taxonomia_rdf "http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#"
+     xml:base="http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:taxonomia_rdf="http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#autordelnombrede -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;autordelnombrede">
+        <rdfs:comment>relaciona a un investigador-autor quien definió el nombre de la categoria en cuestion</rdfs:comment>
+        <rdfs:range rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <owl:inverseOf rdf:resource="&taxonomia_rdf;nombredefinidopor"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#contienea -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;contienea">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment>Indica que unas categorias de mayor nivel (Ejem Reino) contendra a otras de menor nivel (Ejem Especie) siendo su relacion transitiva</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#descritaenelpaper -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;descritaenelpaper">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:range rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#escarcateristicade -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;escarcateristicade">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+        <rdfs:range rdf:resource="&taxonomia_rdf;Categorias"/>
+        <owl:inverseOf rdf:resource="&taxonomia_rdf;tienecomocaracteristica"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#especialistaen -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;especialistaen">
+        <rdfs:range rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Expertos"/>
+        <owl:inverseOf rdf:resource="&taxonomia_rdf;estudiadoporelespecialista"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#estudiadoporelespecialista -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;estudiadoporelespecialista">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:range rdf:resource="&taxonomia_rdf;Expertos"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#nombredefinidopor -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;nombredefinidopor">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>Propiedad inversa a autordelnombrede</rdfs:comment>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:range rdf:resource="&taxonomia_rdf;Investigadores"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#paperquedescribea -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;paperquedescribea">
+        <rdfs:range rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <owl:inverseOf rdf:resource="&taxonomia_rdf;descritaenelpaper"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#pertenecea -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;pertenecea">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment>Propiedad opuesta a contienea</rdfs:comment>
+        <owl:inverseOf rdf:resource="&taxonomia_rdf;contienea"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#publicadopor -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;publicadopor">
+        <rdfs:range rdf:resource="&taxonomia_rdf;Expertos"/>
+        <rdfs:range rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#tienecomocaracteristica -->
+
+    <owl:ObjectProperty rdf:about="&taxonomia_rdf;tienecomocaracteristica">
+        <rdfs:range rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Biografia -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Biografia">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;Datospersonales"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Expertos"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Codigounico -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Codigounico">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;datospaper"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Comentarios -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Comentarios">
+        <rdfs:comment>Anotaciones acerca de la categoria, caracteristica, investigador o autor</rdfs:comment>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Datospersonales -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Datospersonales">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Expertos"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Investigadores"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Descripcion -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Descripcion">
+        <rdfs:comment>Conjunto de carcteristicas mas importantes de la categoria</rdfs:comment>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Descripciondelacaracteristica -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Descripciondelacaracteristica">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Editorial -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Editorial">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;datospaper"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Fechadenacimiento -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Fechadenacimiento">
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;Datospersonales"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Expertos"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Idioma -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Idioma">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;datospaper"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Lugardepublicacion -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Lugardepublicacion">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;datospaper"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#NombreCientifico -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;NombreCientifico">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>Indica el nombre cientifico de dicha especie</rdfs:comment>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#NombreComun -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;NombreComun">
+        <rdfs:comment>Indica los nombres comunes que recibe dicha especie</rdfs:comment>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Nombrecorto -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Nombrecorto">
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;Datospersonales"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Expertos"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Nombredelapublicacion -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Nombredelapublicacion">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;datospaper"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Nombrelargo -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Nombrelargo">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;Datospersonales"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Expertos"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pais -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;Pais">
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;Datospersonales"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Expertos"/>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#datospaper -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;datospaper">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#fecha -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;fecha">
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <rdfs:subPropertyOf rdf:resource="&taxonomia_rdf;datospaper"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#fechadeltermino -->
+
+    <owl:DatatypeProperty rdf:about="&taxonomia_rdf;fechadeltermino">
+        <rdfs:comment>Indica el año en el cual fue agregado el termino o nombre de una categoria determinada.</rdfs:comment>
+        <rdfs:domain rdf:resource="&taxonomia_rdf;Categorias"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Alas -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Alas">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Extremidades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Aletas -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Aletas">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Extremidades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Alimentacion -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Alimentacion">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Caracteristicas -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Caracteristicas">
+        <rdfs:comment>Características que pueden ser usadas para laves taxonómicas</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Categorias -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Categorias">
+        <rdfs:comment>Categorias taxonomicas para la identificación de especímenes</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Celulas -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Celulas">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Clase -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Clase">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Especie -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Especie">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Esqueleto -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Esqueleto">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Expertos -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Expertos">
+        <rdfs:comment>Personas que son especialistas e una categoria taxonomica específica</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Extremidades -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Extremidades">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Familia -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Familia">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Genero -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Genero">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Investigadores -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Investigadores">
+        <rdfs:comment>Personas que han contribuido en la definición de terminos y/o categorias en la clasificación taxonómica</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Locomocion -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Locomocion">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Orden -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Orden">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Patas -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Patas">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Extremidades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Phylum -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Phylum">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Piel -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Piel">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Publicaciones -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Publicaciones">
+        <rdfs:comment>Publicaciones de los expertos que hacen mención al descubrimiento o reordenamiento de la clasificación taxonómica</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Reino -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Reino">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Categorias"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Sistema_circulatorio -->
+
+    <owl:Class rdf:about="&taxonomia_rdf;Sistema_circulatorio">
+        <rdfs:subClassOf rdf:resource="&taxonomia_rdf;Caracteristicas"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Adiposa -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Adiposa">
+        <rdf:type rdf:resource="&taxonomia_rdf;Aletas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Adventicia -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Adventicia"/>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Alas_desarrolladas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Alas_desarrolladas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Alas_no_desarrolladas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Alas_no_desarrolladas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Alas_poco_desarrolladas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Alas_poco_desarrolladas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Anales -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Anales">
+        <rdf:type rdf:resource="&taxonomia_rdf;Aletas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Animalia -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Animalia">
+        <rdf:type rdf:resource="&taxonomia_rdf;Reino"/>
+        <NombreCientifico>Animalia</NombreCientifico>
+        <NombreComun>Animal (Portuguese)
+animaux (French)
+aniamls (English)</NombreComun>
+        <rdfs:comment>Animal</rdfs:comment>
+        <contienea rdf:resource="&taxonomia_rdf;Chordata"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Con_locomocion"/>
+        <contienea rdf:resource="&taxonomia_rdf;Echinodermata"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Eucariota"/>
+        <contienea rdf:resource="&taxonomia_rdf;Hemichordata"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Heterotrofo"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Pluricelulares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Archaea -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Archaea">
+        <rdf:type rdf:resource="&taxonomia_rdf;Reino"/>
+        <NombreCientifico>Archaea</NombreCientifico>
+        <Descripcion>Las arqueaobacterias se añade como un paso preliminar para dividir a cabo por separado de bacterias (que se utilizarán con preferencia a Monera)</Descripcion>
+        <rdfs:comment>Arqueobacterias</rdfs:comment>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Heterotrofo"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Procariota"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Unicelulares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Auriculopsis -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Auriculopsis">
+        <rdf:type rdf:resource="&taxonomia_rdf;Genero"/>
+        <NombreCientifico>Auriculopsis</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Auriculopsis_temperi"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Auriculopsis_temperi -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Auriculopsis_temperi">
+        <rdf:type rdf:resource="&taxonomia_rdf;Especie"/>
+        <NombreCientifico>Auriculopsis temperi</NombreCientifico>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Autotrofo -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Autotrofo">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alimentacion"/>
+        <Descripciondelacaracteristica>Autotrofo</Descripciondelacaracteristica>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Bacillariophyceae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Bacillariophyceae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Clase"/>
+        <NombreCientifico>Bacillariophyceae</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Pennales"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Bacillariophyta -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Bacillariophyta">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <NombreCientifico>Bacillariophyta</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Bacillariophyceae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Bacteria -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Bacteria">
+        <rdf:type rdf:resource="&taxonomia_rdf;Reino"/>
+        <NombreCientifico>Bacteria</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Bacteria_"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Heterotrofo"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Procariota"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Unicelulares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Bacteria_ -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Bacteria_">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <NombreCientifico>Bacteria_</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Schizomycetes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Basidiomycota -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Basidiomycota">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <NombreCientifico>Basidiomycota</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Pucciniomycetes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Bragasellus_escolai -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Bragasellus_escolai">
+        <rdf:type rdf:resource="&taxonomia_rdf;Publicaciones"/>
+        <fecha>1972-01-01</fecha>
+        <Editorial>International Journal of Speleology 10:</Editorial>
+        <Nombredelapublicacion>Bragasellus escolai n. sp., Crustacea Isopoda Asellota cavernicole d&apos;Espagne</Nombredelapublicacion>
+        <publicadopor rdf:resource="&taxonomia_rdf;Henry_et"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#CInco_pares_de_patas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;CInco_pares_de_patas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Carece_de_extremidades -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Carece_de_extremidades">
+        <rdf:type rdf:resource="&taxonomia_rdf;Extremidades"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Carnivoro -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Carnivoro">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alimentacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Caudal -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Caudal">
+        <rdf:type rdf:resource="&taxonomia_rdf;Aletas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Chordata -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Chordata">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <rdfs:comment>Cordados o presencia de notocordo</rdfs:comment>
+        <NombreCientifico>Chordata</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Mammalia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Chromista -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Chromista">
+        <rdf:type rdf:resource="&taxonomia_rdf;Reino"/>
+        <rdfs:comment>Algas</rdfs:comment>
+        <NombreCientifico>Chromista</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Bacillariophyta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Cilios -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Cilios">
+        <rdf:type rdf:resource="&taxonomia_rdf;Locomocion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Completo -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Completo">
+        <rdf:type rdf:resource="&taxonomia_rdf;Sistema_circulatorio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Con_dos_dedos -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Con_dos_dedos">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Con_locomocion -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Con_locomocion">
+        <rdf:type rdf:resource="&taxonomia_rdf;Locomocion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Con_plumaje_llamativo -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Con_plumaje_llamativo">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Con_tres_dedos -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Con_tres_dedos">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Cuatro_pares_de_patas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Cuatro_pares_de_patas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Desnuda -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Desnuda">
+        <rdf:type rdf:resource="&taxonomia_rdf;Piel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Diatomaceae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Diatomaceae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Familia"/>
+        <NombreCientifico>Diatomaceae</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Auriculopsis"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Doble -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Doble">
+        <rdf:type rdf:resource="&taxonomia_rdf;Sistema_circulatorio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Dorsales -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Dorsales">
+        <rdf:type rdf:resource="&taxonomia_rdf;Aletas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Dos_pares_de_patas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Dos_pares_de_patas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Echinodermata -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Echinodermata">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <NombreCientifico>Echinodermata</NombreCientifico>
+        <rdfs:comment>Equinodermos como el erizo, estrella de mar entre otros.</rdfs:comment>
+        <nombredefinidopor rdf:resource="&taxonomia_rdf;Klein"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Elephantidae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Elephantidae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Familia"/>
+        <NombreCientifico>Elephantidae</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Elephas"/>
+        <pertenecea rdf:resource="&taxonomia_rdf;Proboscidea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Elephas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Elephas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Genero"/>
+        <NombreCientifico>Elephas</NombreCientifico>
+        <pertenecea rdf:resource="&taxonomia_rdf;Elephantidae"/>
+        <contienea rdf:resource="&taxonomia_rdf;Elephas_maximus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Elephas_maximus -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Elephas_maximus">
+        <rdf:type rdf:resource="&taxonomia_rdf;Especie"/>
+        <NombreCientifico>Elephas maximus</NombreCientifico>
+        <NombreComun>Elefante Asiatico</NombreComun>
+        <pertenecea rdf:resource="&taxonomia_rdf;Elephas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Endoesqueleto -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Endoesqueleto">
+        <rdf:type rdf:resource="&taxonomia_rdf;Esqueleto"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Escamas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Escamas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Piel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Esqueleto_catilaginoso -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Esqueleto_catilaginoso">
+        <rdf:type rdf:resource="&taxonomia_rdf;Esqueleto"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Esqueleto_oseo -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Esqueleto_oseo">
+        <rdf:type rdf:resource="&taxonomia_rdf;Esqueleto"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Eubacteriales -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Eubacteriales">
+        <rdf:type rdf:resource="&taxonomia_rdf;Orden"/>
+        <NombreCientifico>Eubacteriales</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Micrococcaceae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Eucariota -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Eucariota">
+        <rdf:type rdf:resource="&taxonomia_rdf;Celulas"/>
+        <Descripciondelacaracteristica>Eucariota</Descripciondelacaracteristica>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Exoesqueleto -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Exoesqueleto">
+        <rdf:type rdf:resource="&taxonomia_rdf;Esqueleto"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Fabaceae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Fabaceae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Familia"/>
+        <NombreCientifico>Fabaceae</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Medicago"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Fabales -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Fabales">
+        <rdf:type rdf:resource="&taxonomia_rdf;Orden"/>
+        <NombreCientifico>Fabales</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Fabaceae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Flagelo -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Flagelo">
+        <rdf:type rdf:resource="&taxonomia_rdf;Locomocion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Frutivoro -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Frutivoro">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alimentacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Fungi -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Fungi">
+        <rdf:type rdf:resource="&taxonomia_rdf;Reino"/>
+        <NombreCientifico>Fungi</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Basidiomycota"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Hemichordata -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Hemichordata">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <NombreCientifico>Henichordata</NombreCientifico>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Henry_et -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Henry_et">
+        <rdf:type rdf:resource="&taxonomia_rdf;Investigadores"/>
+        <Nombrelargo>Henry, J.P., and G. Magniez. 1972C.</Nombrelargo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Herbivoro -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Herbivoro">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alimentacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Heterotrofo -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Heterotrofo">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alimentacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Incompleto -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Incompleto">
+        <rdf:type rdf:resource="&taxonomia_rdf;Sistema_circulatorio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Insectivoro -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Insectivoro">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alimentacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Kensley_Schotte -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Kensley_Schotte">
+        <rdf:type rdf:resource="&taxonomia_rdf;Expertos"/>
+        <Nombrelargo>Brian Kensley &amp; Marilyn Schotte</Nombrelargo>
+        <Biografia>National Museum of Natural History</Biografia>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Klein -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Klein">
+        <rdf:type rdf:resource="&taxonomia_rdf;Investigadores"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Magnoliopsida -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Magnoliopsida">
+        <rdf:type rdf:resource="&taxonomia_rdf;Clase"/>
+        <NombreCientifico>Magnoliopsida</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Fabales"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Mammalia -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Mammalia">
+        <rdf:type rdf:resource="&taxonomia_rdf;Clase"/>
+        <NombreCientifico>Mammalia</NombreCientifico>
+        <pertenecea rdf:resource="&taxonomia_rdf;Chordata"/>
+        <contienea rdf:resource="&taxonomia_rdf;Proboscidea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Mas_de_10_pares_de_patas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Mas_de_10_pares_de_patas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Medicago -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Medicago">
+        <rdf:type rdf:resource="&taxonomia_rdf;Genero"/>
+        <NombreCientifico>Medicago</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Medicago_sativa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Medicago_sativa -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Medicago_sativa">
+        <rdf:type rdf:resource="&taxonomia_rdf;Especie"/>
+        <NombreComun>Alfalfa</NombreComun>
+        <NombreCientifico>Medicago sativa</NombreCientifico>
+        <Descripcion>Planta forrajera usado en la crianza de ganado.</Descripcion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Micrococcaceae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Micrococcaceae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Familia"/>
+        <NombreCientifico>Micrococcaceae</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Staphylococcus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#No_desarrolladas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;No_desarrolladas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Omnivoro -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Omnivoro">
+        <rdf:type rdf:resource="&taxonomia_rdf;Alimentacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Patas_Largas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Patas_Largas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Patas_cortas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Patas_cortas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pectorales -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pectorales">
+        <rdf:type rdf:resource="&taxonomia_rdf;Aletas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pelos -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pelos">
+        <rdf:type rdf:resource="&taxonomia_rdf;Piel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pelvicas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pelvicas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Aletas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pennales -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pennales">
+        <rdf:type rdf:resource="&taxonomia_rdf;Orden"/>
+        <NombreCientifico>Pennales</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Diatomaceae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Plantae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Plantae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Reino"/>
+        <NombreCientifico>Plantae</NombreCientifico>
+        <NombreComun>Plantas</NombreComun>
+        <Descripcion>Organismos autotrofos sin locomoción</Descripcion>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Autotrofo"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Eucariota"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Pluricelulares"/>
+        <contienea rdf:resource="&taxonomia_rdf;Tracheophyta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Plumas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Plumas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Piel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pluricelulares -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pluricelulares">
+        <rdf:type rdf:resource="&taxonomia_rdf;Celulas"/>
+        <Descripciondelacaracteristica>Pluricelulares</Descripciondelacaracteristica>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Proboscidea -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Proboscidea">
+        <rdf:type rdf:resource="&taxonomia_rdf;Orden"/>
+        <NombreCientifico>Proboscidea</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Elephantidae"/>
+        <pertenecea rdf:resource="&taxonomia_rdf;Mammalia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Procariota -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Procariota">
+        <rdf:type rdf:resource="&taxonomia_rdf;Celulas"/>
+        <Descripciondelacaracteristica>Procariota</Descripciondelacaracteristica>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Protozoa -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Protozoa">
+        <rdf:type rdf:resource="&taxonomia_rdf;Reino"/>
+        <NombreCientifico>Protozoa</NombreCientifico>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Cilios"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Eucariota"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Flagelo"/>
+        <contienea rdf:resource="&taxonomia_rdf;Sarcomastigophora"/>
+        <tienecomocaracteristica rdf:resource="&taxonomia_rdf;Unicelulares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pseudopodos -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pseudopodos">
+        <rdf:type rdf:resource="&taxonomia_rdf;Locomocion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Puccinia -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Puccinia">
+        <rdf:type rdf:resource="&taxonomia_rdf;Genero"/>
+        <NombreCientifico>Puccinia</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Puccinia_graminis"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Puccinia_graminis -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Puccinia_graminis">
+        <rdf:type rdf:resource="&taxonomia_rdf;Especie"/>
+        <NombreComun>Roya</NombreComun>
+        <NombreCientifico>Puccinia graminis</NombreCientifico>
+        <Descripcion>La Roya que ataca a gramineas como un polvo blanco</Descripcion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pucciniaceae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pucciniaceae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Familia"/>
+        <NombreCientifico>Pucciniaceae</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Puccinia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pucciniales -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pucciniales">
+        <rdf:type rdf:resource="&taxonomia_rdf;Orden"/>
+        <NombreCientifico>Pucciniales</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Pucciniaceae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Pucciniomycetes -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Pucciniomycetes">
+        <rdf:type rdf:resource="&taxonomia_rdf;Clase"/>
+        <NombreCientifico>Pucciniomycetes</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Pucciniales"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#SImple -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;SImple">
+        <rdf:type rdf:resource="&taxonomia_rdf;Sistema_circulatorio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Sarcomastigophora -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Sarcomastigophora">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <NombreCientifico>Sarcomastigophora</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Zoomastigophora"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Schizomycetes -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Schizomycetes">
+        <rdf:type rdf:resource="&taxonomia_rdf;Clase"/>
+        <NombreCientifico>Schizomycetes</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Eubacteriales"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Sin_locomocion -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Sin_locomocion">
+        <rdf:type rdf:resource="&taxonomia_rdf;Locomocion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Son_unicelulares -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Son_unicelulares"/>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Staphylococcus -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Staphylococcus">
+        <rdf:type rdf:resource="&taxonomia_rdf;Genero"/>
+        <NombreCientifico>Staphylococcus</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Staphylococcus_aureus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Staphylococcus_aureus -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Staphylococcus_aureus">
+        <rdf:type rdf:resource="&taxonomia_rdf;Especie"/>
+        <NombreCientifico>Staphylococcus aureus</NombreCientifico>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Tipica -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Tipica"/>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Tracheophyta -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Tracheophyta">
+        <rdf:type rdf:resource="&taxonomia_rdf;Phylum"/>
+        <NombreCientifico>Tracheophyta</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Magnoliopsida"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Tres_pares_de_patas -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Tres_pares_de_patas">
+        <rdf:type rdf:resource="&taxonomia_rdf;Patas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Trypanosoma -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Trypanosoma">
+        <rdf:type rdf:resource="&taxonomia_rdf;Genero"/>
+        <NombreCientifico>Trypanosoma</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Trypanosoma_cruzi"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Trypanosoma_cruzi -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Trypanosoma_cruzi">
+        <rdf:type rdf:resource="&taxonomia_rdf;Especie"/>
+        <NombreCientifico>Trypanosoma cruzi</NombreCientifico>
+        <Descripcion>Produce el mal de Chagas</Descripcion>
+        <NombreComun>tripanosoma</NombreComun>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Trypanosomatida -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Trypanosomatida">
+        <rdf:type rdf:resource="&taxonomia_rdf;Orden"/>
+        <NombreCientifico>Trypanosomatida</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Trypanosomatidae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Trypanosomatidae -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Trypanosomatidae">
+        <rdf:type rdf:resource="&taxonomia_rdf;Familia"/>
+        <NombreCientifico>Trypanosomatidae</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Trypanosoma"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Unicelulares -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Unicelulares">
+        <rdf:type rdf:resource="&taxonomia_rdf;Celulas"/>
+        <Descripciondelacaracteristica>Unicelulares</Descripciondelacaracteristica>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#Zoomastigophora -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;Zoomastigophora">
+        <rdf:type rdf:resource="&taxonomia_rdf;Clase"/>
+        <NombreCientifico>Zoomastigophora</NombreCientifico>
+        <contienea rdf:resource="&taxonomia_rdf;Trypanosomatida"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/franklin/ontologies/2014/10/taxonomia_rdf#son_pluricelulares -->
+
+    <owl:NamedIndividual rdf:about="&taxonomia_rdf;son_pluricelulares"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&taxonomia_rdf;Caracteristicas"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Categorias"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Expertos"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Investigadores"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Publicaciones"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&taxonomia_rdf;Clase"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Especie"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Familia"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Genero"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Orden"/>
+            <rdf:Description rdf:about="&taxonomia_rdf;Phylum"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
